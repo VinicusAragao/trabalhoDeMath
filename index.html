@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Poliedros</title>
 </head>
 <body>
-    <h1 class="titulo">Formas</h1>
+    <h1 class="titulo">formas</h1>
+
     <!--prisma-->
-    <div class="container">
-        <div class="box">
-            <h1 class="nome-das-formas">Prisma</h1>
+    <div class="box">
+        <h1>Prismas</h1>
+        <div class="side">
             <h1 class="titulo-conteudo">Formulas das Áreas:</h1>
 
             <p>Área da base (AB) = comprimento X altura da base.</p>
@@ -22,86 +23,104 @@
 
             <p>Volume = Área da base X Altura</p>
         </div>
+        <div class="side">
+            <canvas class="prism"></canvas>
+        </div>
     </div>
+
     <!--piramides-->
-    <div class="container">
-        <div class="box">
-            <h1 class="nome-das-formas">piramides</h1>
+    <div class="box">
+        <h1>piramides</h1>
+        <div class="side">
             <h1 class="titulo-conteudo">Formulas das Áreas:</h1>
-        
             <p>Área da base (AB) = lado da base².</p>
             <p>Área lateral (AL) = perímito da base X apótema</p>
             <p>Área lateral (AT) = ² X area da base X area lateral.</p>
 
             <h1 class="titulo-conteudo">Volume</h1>
-
             <p>Volume = 3/1 X área da base X altura</p>
         </div>
+        <div class="side">
+            <canvas class="pyramid"></canvas>
+        </div>
     </div>
-    <!--cilindro-->
-    <div class="container">
-        <div class="box">
-            <h1 class="nome-das-formas">cilindro</h1>
-        
-            <h1 class="titulo-conteudo">Formulas das Áreas</h1>
 
+    <!--cilindro-->
+    <div class="box">
+        <h1>cilindros</h1>
+        <div class="side">
+            <h1 class="titulo-conteudo">Formulas das Áreas</h1>
             <p>Área da base (AB)= π X raio².</p>
             <p>Área lateral (AL)= ² X π X raio X altura.</p>
             <p>Área Total (AT)= 2 X Área da base X Área lateral.</p>
 
             <h1 class="titulo-conteudo">Volume</h1>
-
             <p>Volume = π X raio² X altura</p>
         </div>
+        <div class="side">
+            <canvas class="cylinder"></canvas>
+        </div>
     </div>
-    <!--cone-->
-    <div class="container">
-        <div class="box">
-            <h1 class="nome-das-formas">cone</h1>
-        
-            <h1 class="titulo-conteudo">formulas das Áreas</h1>
 
+    <!--cone-->
+    <div class="box">
+        <h1>cones</h1>
+        <div class="side">       
+            <h1 class="titulo-conteudo">Formulas das Áreas</h1>
             <p>Área da base (AB)= π X raio².</p>
             <p>Área lateral (AL)= π X raio X geratriz.</p>
             <p>Área Total (AT)= 2 X Área da base X Área lateral.</p>
 
-            <h1 class="titulo-conteudo">volume</h1>
-
-             <p>Volume = 3/1 X π X raio² X altura</p>
+            <h1 class="titulo-conteudo">Volume</h1>
+            <p>Volume = 3/1 X π X raio² X altura</p>
+        </div>
+        <div class="side">
+            <canvas class="cone"></canvas>
         </div>
     </div>
-    <!--esfera-->
-    <div class="container">
-        <div class="box">
-            <h1 class="nome-das-formas">esfera</h1>
-        
-            <h1 class="titulo-conteudo">formulas das Áreas</h1>
 
+    <!--esfera-->
+    <div class="box">
+        <h1>esferas</h1>
+        <div class="side">
+            <h1 class="titulo-conteudo">Formulas das Áreas</h1>
             <p>Área da superfíce (AS)= 4 X π X raio².</p>
 
-            <h1 class="titulo-conteudo">volume</h1>
-
+            <h1 class="titulo-conteudo">Volume</h1>
             <p>Volume = 3/4 X π X raio²</p>
         </div>
+        <div class="side">
+            <canvas class="sphere"></canvas>
+        </div>
     </div>
+
         <!--consideracoea
         Depende da forma da base do prisma. Por exemplo, para um prisma retangular-->   
-    <div class="container">
-        <div class="box">
-            <h1 class="nome-das-formas">Considerações</h1>
-
+    <div class="box">
+        <h1>Considerações</h1>
+        <div class="side">
             <p>Depende da forma do prisma e da base da pirâmide para calcular a área da base.</p>
-            <p>apótema e a altura de um triângulo da base até vértice da pirâmide</p>
-            <p>geratriz e a distância do vértice do cone até um ponto na circunferência da base, calculo:<br>g² = h² + r²</p>
+            <p>Apótema é a altura de um triângulo da base até vértice da pirâmide;</p>
+            <p>Geratriz é a distância da vértice do cone até um ponto na circunferência da base, calculo:<br>g² = h² + r²</p>
             <ul>
                 <li>h = altura</li>
                 <li>b = base</li>
                 <li>g = geratriz</li>
                 <li>r = raio</li>
-                <li>π = pi ou 3 ou 3,14 ou 3,14...<br>depende qual deles vão ser ultilizados</li>
+                <li>π = pi ou 3 ou 3,14 ou 3,14..., depende da situação.</li>
             </ul>
-        </div></div>
-    <footer class="footer">cavalo</footer>
-	<script type="module" src="main.js"></script>
+        </div>
+        <div class="side">
+            <canvas class="prism"></canvas>
+        </div>
+    </div>
+    <footer class="footer">
+        <b>Créditos:</b>
+        <p>Site - Victor K.</p>
+        <p>Formulas - Campos</p>
+        <p>Atividades - Macaco</p>
+        <p>Objetos 3d - Vinicius</p>
+    </footer>
+    <script type="module" src="main.js"></script>
 </body>
 </html>

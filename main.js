@@ -1,38 +1,58 @@
 import * as THREE from 'three'
 
-const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000)
+const scenes = []
+// scenes.push(new THREE.Scene)
+scenes.push(new THREE.Scene)
+scenes.push(new THREE.Scene)
+scenes.push(new THREE.Scene)
+scenes.push(new THREE.Scene)
+for(const scene of scenes){
+	scene.background = new THREE.Color('#acbe94')
+}
 
-const renderer = new THREE.WebGLRenderer()
-renderer.setSize(window.innerWidth,window.innerHeight)
-document.body.appendChild( renderer.domElement )
+const renderes = []
+// renderes.push(new THREE.WebGLRenderer({canvas: document.querySelector('.prism')}))
+renderes.push(new THREE.WebGLRenderer({canvas: document.querySelector('.pyramid'),antialias:true}))
+renderes.push(new THREE.WebGLRenderer({canvas: document.querySelector('.cylinder'),antialias:true}))
+renderes.push(new THREE.WebGLRenderer({canvas: document.querySelector('.cone'),antialias:true}))
+renderes.push(new THREE.WebGLRenderer({canvas: document.querySelector('.sphere'),antialias:true}))
+resize()
 
-const material = new THREE.MeshBasicMaterial({color: 0x333333})
+const material = new THREE.MeshBasicMaterial({color: 0x132222})
+const lineMaterial = new THREE.LineBasicMaterial({color:0xffffff})
 
-const cone = new THREE.Mesh(new THREE.ConeGeometry(5,10),material)
-const cube = new THREE.Mesh(new THREE.CylinderGeometry(5,5,10),material)
-const pyramid = new THREE.Mesh(new THREE.TetrahedronGeometry(10),material)
-const sphere = new THREE.Mesh(new THREE.SphereGeometry(10),material)
+const meshs = []
+// meshs.push(prismMesh)
+meshs.push(new THREE.Mesh(new THREE.TetrahedronGeometry(7),material))
+meshs.push(new THREE.Mesh(new THREE.CylinderGeometry(4,4,7),material))
+meshs.push(new THREE.Mesh(new THREE.ConeGeometry(5,5),material))
+meshs.push(new THREE.Mesh(new THREE.SphereGeometry(6),material))
+for(const mesh of meshs){
+	mesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(mesh.geometry),lineMaterial))
+}
 
-camera.position.set(0,0,20)
-scene.add(cone,cube,pyramid,sphere)
-
-for(let i = 0; i < scene.children.length;i++){
-	const obj = scene.children[i]
-	obj.position.set(i*20-20,0,0)
-	const edges = new THREE.EdgesGeometry(obj.geometry)
-	obj.add(new THREE.LineSegments(edges,new THREE.LineBasicMaterial({color:0xff0000})))
+const camera = new THREE.PerspectiveCamera(90,window.innerWidth/window.innerHeight, 0.1, 1000)
+camera.position.set(0,0,10)
+for(let i = 0; i < scenes.length;i++){
+	scenes[i].add(meshs[i])
 }
 
 function animate(){
-
-	for(const obj of scene.children){
-		obj.rotation.x += 0.1
-		obj.rotation.y += 0.1
-		// obj.rotation.z += 0.1
+	for(let i = 0; i < scenes.length;i++){
+		scenes[i].children[0].rotation.x += 0.005
+		scenes[i].children[0].rotation.y += 0.01
+		renderes[i].render(scenes[i],camera)
 	}
-
-	renderer.render(scene,camera)
 	requestAnimationFrame(animate)
 }
 animate()
+
+
+
+function resize(){
+	for(const renderer of renderes){
+		const style = getComputedStyle(renderer.domElement)
+		renderer.setSize(parseInt(style.width),parseInt(style.height))
+	}
+}
+window.addEventListener('resize',resize)
